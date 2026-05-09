@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>정지우 포트폴리오 | AI와 서사를 잇는 작가</title>
+  <style>
+    :root {
+      font-size: 62.5%;
+      --green-star: #006241;
+      --green-accent: #00754A;
+      --green-house: #1E3932;
+      --green-uplift: #2b5148;
+      --green-light: #d4e9e2;
+      --gold: #cba258;
+      --gold-lightest: #faf6ee;
+      --cream: #f2f0eb;
+      --ceramic: #edebe9;
+      --white: #ffffff;
+      --neutral: #f9f9f9;
+      --ink: rgba(0, 0, 0, 0.87);
+      --ink-soft: rgba(0, 0, 0, 0.58);
+      --white-soft: rgba(255, 255, 255, 0.70);
+      --radius-card: 12px;
+      --radius-pill: 50px;
+      --shadow-card: 0 0 .5px rgba(0,0,0,0.14), 0 1px 1px rgba(0,0,0,0.24);
+      --shadow-nav: 0 1px 3px rgba(0,0,0,0.1), 0 2px 2px rgba(0,0,0,0.06), 0 0 2px rgba(0,0,0,0.07);
+      --space-1: .4rem;
+      --space-2: .8rem;
+      --space-3: 1.6rem;
+      --space-4: 2.4rem;
+      --space-5: 3.2rem;
+      --space-6: 4rem;
+      --space-7: 4.8rem;
+      --space-8: 5.6rem;
+      --space-9: 6.4rem;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Inter, Manrope, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 8.3rem;
+      padding: 0 clamp(1.6rem, 4vw, 4rem);
+      background: var(--white);
+      box-shadow: var(--shadow-nav);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-weight: 700;
+      color: var(--green-star);
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 4.4rem;
+      height: 4.4rem;
+      border-radius: 50%;
+      background: var(--green-star);
+      color: var(--white);
+      font-size: 1.5rem;
+      font-weight: 800;
+      box-shadow: inset 0 0 0 .5rem var(--cream);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.4rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 3.6rem;
+      padding: .7rem 1.6rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid currentColor;
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      cursor: pointer;
+    }
+
+    .button:active,
+    .frap:active {
+      transform: scale(.95);
+    }
+
+    .button.primary {
+      background: var(--green-accent);
+      border-color: var(--green-accent);
+      color: var(--white);
+    }
+
+    .button.outline {
+      color: var(--green-accent);
+      background: transparent;
+      border-color: var(--green-accent);
+    }
+
+    .button.dark-outline {
+      color: var(--ink);
+      background: transparent;
+      border-color: var(--ink);
+    }
+
+    .button.black {
+      color: var(--white);
+      background: #000;
+      border-color: #000;
+    }
+
+    .button.inverted {
+      color: var(--green-accent);
+      background: var(--white);
+      border-color: var(--white);
+    }
+
+    .button.on-dark {
+      color: var(--white);
+      background: transparent;
+      border-color: var(--white);
+    }
+
+    main {
+      overflow: hidden;
+    }
+
+    .section {
+      padding: clamp(4rem, 7vw, 7.2rem) clamp(1.6rem, 4vw, 4rem);
+    }
+
+    .container {
+      width: min(118rem, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: calc(100vh - 8.3rem);
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(32rem, .85fr);
+      align-items: center;
+      gap: clamp(3.2rem, 5vw, 6.4rem);
+      background: var(--cream);
+    }
+
+    .eyebrow {
+      margin: 0 0 1.6rem;
+      color: var(--green-star);
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 76rem;
+      margin-bottom: 2.4rem;
+      color: var(--green-star);
+      font-size: clamp(4.2rem, 6.5vw, 7.4rem);
+      line-height: 1.08;
+      font-weight: 700;
+      letter-spacing: -0.016rem;
+    }
+
+    .hero-copy {
+      max-width: 64rem;
+      margin-bottom: 3.2rem;
+      font-size: clamp(1.8rem, 2.2vw, 2.1rem);
+      line-height: 1.65;
+      color: var(--ink);
+    }
+
+    .hero-actions,
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 48rem;
+      padding: 3.2rem;
+      border-radius: var(--radius-card);
+      background: var(--green-house);
+      color: var(--white);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -12rem -18rem auto;
+      width: 34rem;
+      height: 34rem;
+      border-radius: 50%;
+      background: var(--green-uplift);
+      z-index: -1;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 4rem 3.2rem auto auto;
+      width: 10rem;
+      height: 10rem;
+      border: 1px solid rgba(255,255,255,.26);
+      border-radius: 50%;
+      z-index: -1;
+    }
+
+    .cup-note {
+      display: inline-block;
+      margin-bottom: 3.2rem;
+      padding: .6rem 1.4rem;
+      border-radius: var(--radius-pill);
+      background: rgba(255,255,255,.12);
+      color: var(--white);
+      font-family: "Kalam", "Comic Sans MS", cursive;
+      font-size: 2rem;
+    }
+
+    .story-stack {
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 3.2rem;
+    }
+
+    .story-chip {
+      padding: 1.6rem;
+      border-radius: var(--radius-card);
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.16);
+    }
+
+    .story-chip strong {
+      display: block;
+      margin-bottom: .4rem;
+      color: var(--white);
+      font-size: 1.6rem;
+    }
+
+    .story-chip span {
+      color: var(--white-soft);
+      font-size: 1.4rem;
+    }
+
+    .profile-strip {
+      background: var(--white);
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .profile-item,
+    .card {
+      border-radius: var(--radius-card);
+      background: var(--white);
+      box-shadow: var(--shadow-card);
+    }
+
+    .profile-item {
+      padding: 2.4rem;
+      border-top: .4rem solid var(--green-accent);
+    }
+
+    .profile-item span {
+      display: block;
+      margin-bottom: .8rem;
+      color: var(--ink-soft);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .profile-item strong {
+      color: var(--ink);
+      font-size: 2rem;
+    }
+
+    .section-title {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      gap: 2.4rem;
+      align-items: end;
+      margin-bottom: 3.2rem;
+    }
+
+    .section-title h2 {
+      margin-bottom: 0;
+      color: var(--green-star);
+      font-size: 2.4rem;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .section-title p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+      font-size: 1.6rem;
+    }
+
+    .timeline {
+      background: var(--ceramic);
+    }
+
+    .timeline-list {
+      display: grid;
+      gap: 1.6rem;
+    }
+
+    .timeline-card {
+      display: grid;
+      grid-template-columns: 18rem minmax(0, 1fr);
+      gap: 2.4rem;
+      padding: 2.4rem;
+      border-radius: var(--radius-card);
+      background: var(--white);
+      box-shadow: var(--shadow-card);
+    }
+
+    .timeline-label {
+      color: var(--green-star);
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .timeline-card h3 {
+      margin-bottom: .8rem;
+      color: var(--ink);
+      font-size: 2.4rem;
+      line-height: 1.3;
+    }
+
+    .timeline-card p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+    }
+
+    .feature-band {
+      background: var(--green-house);
+      color: var(--white);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: clamp(3.2rem, 5vw, 6.4rem);
+      align-items: center;
+    }
+
+    .feature-band h2 {
+      max-width: 56rem;
+      margin-bottom: 1.6rem;
+      color: var(--white);
+      font-size: clamp(3.2rem, 5vw, 5.6rem);
+      line-height: 1.14;
+    }
+
+    .feature-band p {
+      max-width: 58rem;
+      margin-bottom: 2.4rem;
+      color: var(--white-soft);
+      font-size: 1.9rem;
+      line-height: 1.75;
+    }
+
+    .research-board {
+      display: grid;
+      gap: 1.6rem;
+    }
+
+    .research-card {
+      padding: 2rem;
+      border-radius: var(--radius-card);
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.14);
+    }
+
+    .research-card .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.2rem;
+      height: 3.2rem;
+      margin-bottom: 1.2rem;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--green-house);
+      font-weight: 800;
+    }
+
+    .research-card h3 {
+      margin-bottom: .8rem;
+      color: var(--white);
+      font-size: 2rem;
+    }
+
+    .research-card p {
+      margin-bottom: 0;
+      color: var(--white-soft);
+      font-size: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .skills {
+      background: var(--cream);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .card {
+      padding: 2.4rem;
+    }
+
+    .card h3 {
+      margin-bottom: 1.2rem;
+      color: var(--green-star);
+      font-size: 2.4rem;
+      line-height: 1.35;
+    }
+
+    .card p {
+      margin-bottom: 1.6rem;
+      color: var(--ink-soft);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .tag-list li {
+      padding: .5rem 1rem;
+      border-radius: var(--radius-pill);
+      background: var(--green-light);
+      color: var(--green-house);
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .tools-band {
+      background: var(--white);
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .tool-card {
+      min-height: 15rem;
+      padding: 2rem;
+      border-radius: var(--radius-card);
+      background: var(--gold-lightest);
+      box-shadow: var(--shadow-card);
+    }
+
+    .tool-card h3 {
+      margin-bottom: .8rem;
+      color: var(--green-house);
+      font-size: 1.8rem;
+    }
+
+    .tool-card p {
+      margin-bottom: 0;
+      color: var(--ink-soft);
+      font-size: 1.4rem;
+    }
+
+    .quote-zone {
+      background: var(--ceramic);
+    }
+
+    .quote-card {
+      padding: clamp(3.2rem, 6vw, 6.4rem);
+      border-radius: var(--radius-card);
+      background: var(--white);
+      box-shadow: var(--shadow-card);
+    }
+
+    .quote-card blockquote {
+      margin: 0;
+      color: var(--green-house);
+      font-family: "Iowan Old Style", Georgia, serif;
+      font-size: clamp(3.2rem, 5vw, 5rem);
+      line-height: 1.22;
+    }
+
+    .quote-card p {
+      max-width: 72rem;
+      margin: 2.4rem 0 0;
+      color: var(--ink-soft);
+      font-size: 1.8rem;
+    }
+
+    .contact {
+      background: var(--green-house);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 1.6rem;
+      color: var(--white);
+      font-size: clamp(3.2rem, 5vw, 5.6rem);
+      line-height: 1.14;
+    }
+
+    .contact p {
+      max-width: 64rem;
+      margin: 0 auto 2.4rem;
+      color: var(--white-soft);
+      font-size: 1.8rem;
+    }
+
+    footer {
+      padding: 3.2rem clamp(1.6rem, 4vw, 4rem);
+      background: var(--green-house);
+      color: var(--white-soft);
+      border-top: 1px solid rgba(255,255,255,.14);
+      font-size: 1.4rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.6rem;
+      width: min(118rem, 100%);
+      margin: 0 auto;
+    }
+
+    .frap {
+      position: fixed;
+      right: 1.6rem;
+      bottom: 1.6rem;
+      z-index: 30;
+      display: grid;
+      place-items: center;
+      width: 5.6rem;
+      height: 5.6rem;
+      border: 0;
+      border-radius: 50%;
+      background: var(--green-accent);
+      color: var(--white);
+      box-shadow: 0 0 6px rgba(0,0,0,.24), 0 8px 12px rgba(0,0,0,.14);
+      transition: transform .2s ease, box-shadow .2s ease;
+      cursor: pointer;
+    }
+
+    .frap:active {
+      box-shadow: 0 0 6px rgba(0,0,0,.24), 0 8px 12px rgba(0,0,0,0);
+    }
+
+    .frap svg {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        min-height: 7.2rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero,
+      .feature-grid,
+      .section-title {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .profile-grid,
+      .tool-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-actions .dark-outline {
+        display: none;
+      }
+
+      .brand span:last-child {
+        display: none;
+      }
+
+      .hero-card {
+        min-height: auto;
+      }
+
+      .profile-grid,
+      .tool-grid,
+      .timeline-card {
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        min-height: 4.4rem;
+      }
+
+      .hero-actions .button,
+      .cta-row .button {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav" aria-label="주요 내비게이션">
+    <a class="brand" href="#top" aria-label="정지우 포트폴리오 홈">
+      <span class="brand-mark">JW</span>
+      <span>Jung JiwOO Portfolio</span>
+    </a>
+    <nav class="nav-links" aria-label="섹션 이동">
+      <a href="#origin">Origin</a>
+      <a href="#question">Question</a>
+      <a href="#skills">Skills</a>
+      <a href="#project">Project</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="button dark-outline" href="#contact">소개 보기</a>
+      <a class="button black" href="#project">핵심 프로젝트</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="section hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Storyteller · AI Narrative Researcher</p>
+        <h1 id="hero-title">상처를 이야기로 바꾸고, AI를 팀메이트로 쓰는 작가 지망생</h1>
+        <p class="hero-copy">
+          동의대학교 국어국문학과 1학년 정지우입니다. 소설, 웹소설, 게임 시나리오를 꿈꾸며
+          문학의 감정선과 AI의 생성 능력이 함께 만들 수 있는 새로운 서사 방식을 탐색합니다.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#origin">나의 서사 읽기</a>
+          <a class="button outline" href="#skills">현재 역량 보기</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="포트폴리오 핵심 문장">
+        <span class="cup-note">Jiwoo, your story is ready.</span>
+        <p class="eyebrow" style="color: var(--white-soft);">Narrative Position</p>
+        <h2 style="font-size: 3.2rem; line-height: 1.2; margin-bottom: 1.6rem;">문학과 기술 사이에서 독자가 직접 움직이는 이야기를 설계합니다.</h2>
+        <div class="story-stack">
+          <div class="story-chip">
+            <strong>과거</strong>
+            <span>잦은 전학, 왕따, 척추 수술을 통과하며 이야기가 사람을 버티게 한다는 확신을 얻었습니다.</span>
+          </div>
+          <div class="story-chip">
+            <strong>현재</strong>
+            <span>AI 도구를 독학하며 인터랙티브 노벨과 자연어 기반 서사의 가능성을 조사합니다.</span>
+          </div>
+          <div class="story-chip">
+            <strong>목표</strong>
+            <span>소설작가, 게임 시나리오 작가, 웹소설작가로서 공감 가능한 세계와 인물을 만들고 싶습니다.</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section profile-strip" aria-label="기본 정보">
+      <div class="container profile-grid">
+        <div class="profile-item">
+          <span>Name</span>
+          <strong>정지우</strong>
+        </div>
+        <div class="profile-item">
+          <span>School</span>
+          <strong>동의대학교</strong>
+        </div>
+        <div class="profile-item">
+          <span>Major</span>
+          <strong>국어국문학과</strong>
+        </div>
+        <div class="profile-item">
+          <span>Year</span>
+          <strong>1학년</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section timeline" id="origin">
+      <div class="container">
+        <div class="section-title">
+          <h2>서사의 기원</h2>
+          <p>나의 이야기는 매끄러운 성장담보다 회복의 기록에 가깝습니다. 상처는 소재가 되었고, 소재는 작가라는 목표로 이어졌습니다.</p>
+        </div>
+        <div class="timeline-list">
+          <article class="timeline-card">
+            <div class="timeline-label">Wound</div>
+            <div>
+              <h3>인천에서 부천, 양산으로 이어진 잦은 전학</h3>
+              <p>초등학교부터 중학교까지 반복된 환경 변화와 왕따 경험은 소속감의 결핍을 남겼습니다. 중학교 2학년 척추 수술은 몸과 마음을 동시에 멈춰 세운 사건이었습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-card">
+            <div class="timeline-label">Turn</div>
+            <div>
+              <h3>중학교 1학년, '1책 만들기' 수업</h3>
+              <p>한 권의 책을 직접 만드는 수업을 통해 처음으로 작가의 꿈이 구체화되었습니다. 내 경험을 문장으로 옮기는 일이 누군가에게 닿을 수 있다는 감각을 얻었습니다.</p>
+            </div>
+          </article>
+          <article class="timeline-card">
+            <div class="timeline-label">Drive</div>
+            <div>
+              <h3>상처를 극복하는 방식으로서의 이야기</h3>
+              <p>이야기는 단순한 위로가 아니라 감정과 선택을 움직이는 힘이라고 믿게 되었습니다. 그 믿음이 지금의 진로와 탐구 주제를 밀고 가는 동력입니다.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="question">
+      <div class="container">
+        <div class="section-title">
+          <h2>질문의 시작</h2>
+          <p>고등학교 시절의 입시, AI 활용 경험, 직업 대체 전망은 하나의 질문으로 모였습니다. 소설가는 사라질까, 아니면 다른 방식으로 진화할까?</p>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3>독학으로 버틴 입시</h3>
+            <p>집안 사정 속에서 나홀로 입시를 준비하며 자기주도 학습과 문제 해결 습관을 만들었습니다.</p>
+            <ul class="tag-list">
+              <li>독학</li>
+              <li>자기관리</li>
+              <li>지속력</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>AI와의 충돌</h3>
+            <p>세특과 수행평가에서 AI 활용이 늘어나는 현실, 그리고 소설작가가 직업 대체 위험군이라는 전망을 마주했습니다.</p>
+            <ul class="tag-list">
+              <li>직업 전망</li>
+              <li>AI 활용</li>
+              <li>문학의 미래</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>인터랙티브 노벨 제작</h3>
+            <p>고3 코딩동아리에서 인터랙티브 노벨을 만들며 문학과 AI가 경쟁만 하는 관계가 아니라는 가능성을 확인했습니다.</p>
+            <ul class="tag-list">
+              <li>코딩동아리</li>
+              <li>인터랙티브 노벨</li>
+              <li>세특</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature-band" id="project">
+      <div class="container feature-grid">
+        <div>
+          <p class="eyebrow" style="color: var(--gold);">Signature Project</p>
+          <h2>AI는 도구를 넘어 함께 서사를 설계하는 팀메이트가 될 수 있는가</h2>
+          <p>
+            국내 인터랙티브 노벨 서비스인 제타와 크랙을 중심으로, 빅테크의 원천 모델 API가 국내 중개 플랫폼에서
+            어떻게 사용자 참여형 서사로 번역되는지 조사합니다.
+          </p>
+          <div class="cta-row">
+            <a class="button inverted" href="#skills">역량 보기</a>
+            <a class="button on-dark" href="#ethics">비판 지점 보기</a>
+          </div>
+        </div>
+        <div class="research-board">
+          <article class="research-card">
+            <span class="num">1</span>
+            <h3>서비스 분석</h3>
+            <p>제타와 크랙을 국내 인터랙티브 노벨 플랫폼 사례로 두고, 사용자가 자연어로 서사 흐름을 조종하는 구조를 분석합니다.</p>
+          </article>
+          <article class="research-card">
+            <span class="num">2</span>
+            <h3>기술 구조</h3>
+            <p>클로드, 제미나이 같은 원천 기술과 국내 플랫폼 서비스를 호텔과 중개사이트의 관계처럼 분리해 이해합니다.</p>
+          </article>
+          <article class="research-card">
+            <span class="num">3</span>
+            <h3>서사 변화</h3>
+            <p>고전 문체 구현, 일방향 독해에서 양방향 자연어 전개로 이동하는 흐름을 문학적 관점에서 추적합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section skills" id="skills">
+      <div class="container">
+        <div class="section-title">
+          <h2>현재 역량과 목표</h2>
+          <p>문학적 분석력과 생성형 AI 활용 능력을 함께 키워, 서사를 쓰는 사람과 시스템을 이해하는 사람이 되고자 합니다.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3>진로 목표</h3>
+            <p>소설작가, 게임 시나리오 작가, 웹소설작가를 목표로 캐릭터와 세계관을 설계합니다.</p>
+            <ul class="tag-list">
+              <li>소설</li>
+              <li>게임 시나리오</li>
+              <li>웹소설</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>미디어 분석</h3>
+            <p>소설, 웹툰, 게임 서사를 해체하고 캐릭터 공감의 원인과 매체별 목적을 분석합니다.</p>
+            <ul class="tag-list">
+              <li>서사 구조</li>
+              <li>캐릭터 공감</li>
+              <li>매체 분석</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>AI 활용</h3>
+            <p>프롬프팅과 파인튜닝을 커뮤니티, 검색, 실험을 통해 독학하고 최신 동향을 추적합니다.</p>
+            <ul class="tag-list">
+              <li>프롬프팅</li>
+              <li>파인튜닝</li>
+              <li>트렌드 리서치</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tools-band">
+      <div class="container">
+        <div class="section-title">
+          <h2>사용 툴</h2>
+          <p>텍스트, 이미지, 음원 생성 도구를 각각의 역할에 맞게 나누어 실험합니다.</p>
+        </div>
+        <div class="tool-grid">
+          <article class="tool-card">
+            <h3>Suno</h3>
+            <p>분위기와 장면 정서를 강화하는 음원 생성 실험</p>
+          </article>
+          <article class="tool-card">
+            <h3>Pix / Novel</h3>
+            <p>캐릭터 이미지와 장면 콘셉트를 빠르게 시각화</p>
+          </article>
+          <article class="tool-card">
+            <h3>Manus</h3>
+            <p>조사, 정리, 초안 확장에 활용하는 텍스트 생성 도구</p>
+          </article>
+          <article class="tool-card">
+            <h3>Claude / Gemini</h3>
+            <p>문체 실험, 구조 분석, 대화형 서사 전개 테스트</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quote-zone" id="ethics">
+      <div class="container quote-card">
+        <blockquote>기술은 이야기를 대신 쓰는 존재가 아니라, 작가가 더 넓은 선택지를 검토하게 만드는 협업자일 수 있다.</blockquote>
+        <p>
+          동시에 2차 창작물의 무단 학습, 원작자 배제, 플랫폼의 수익 독식 구조는 반드시 비판적으로 다루어야 합니다.
+          AI와 서사의 공존은 가능성만이 아니라 윤리적 기준을 함께 세우는 일입니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <h2>앞으로의 방향</h2>
+        <p>
+          저는 독자가 수동적으로 읽는 이야기를 넘어, 직접 선택하고 대화하며 바꾸는 서사를 쓰고 싶습니다.
+          문학의 감정 밀도와 AI의 상호작용성을 함께 다루는 작가로 성장하겠습니다.
+        </p>
+        <a class="button inverted" href="#top">처음으로 돌아가기</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Jung Jiwoo Portfolio</span>
+      <span>Warm narrative system inspired by cafe-signage rhythm</span>
+    </div>
+  </footer>
+
+  <a class="frap" href="#project" aria-label="핵심 프로젝트로 이동">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M7 9h10l-.7 10.2A2 2 0 0 1 14.3 21H9.7a2 2 0 0 1-2-1.8L7 9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M9 9V7a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M8 13h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  </a>
+</body>
+</html>
