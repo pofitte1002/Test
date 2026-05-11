@@ -58,9 +58,99 @@
       background: var(--cream);
       color: var(--ink);
       font-family: "BM Jua Hangul", Inter, Manrope, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.7rem;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      font-synthesis-weight: none;
+    }
+
+    body.locked {
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--green-house);
+    }
+
+    body.locked .nav,
+    body.locked main,
+    body.locked footer {
+      opacity: .16;
+      filter: blur(6px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .login-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      place-items: center;
+      padding: 2.4rem;
+      background: rgba(30, 57, 50, .92);
+    }
+
+    body.locked .login-gate {
+      display: grid;
+    }
+
+    .login-panel {
+      width: min(42rem, 100%);
+      padding: 3.2rem;
+      border-radius: var(--radius-card);
+      background: var(--cream);
+      box-shadow: 0 0 6px rgba(0,0,0,.24), 0 8px 12px rgba(0,0,0,.14);
+      text-align: center;
+    }
+
+    .login-panel h1 {
+      margin-bottom: 1.2rem;
+      color: var(--green-star);
+      font-size: 3.2rem;
+      line-height: 1.25;
+      font-weight: 400;
+    }
+
+    .login-panel p {
+      margin-bottom: 2.4rem;
+      color: var(--ink-soft);
       font-size: 1.6rem;
-      line-height: 1.5;
-      letter-spacing: -0.01em;
+    }
+
+    .login-field {
+      display: grid;
+      gap: .8rem;
+      margin-bottom: 1.6rem;
+      text-align: left;
+    }
+
+    .login-field label {
+      color: var(--green-house);
+      font-size: 1.4rem;
+    }
+
+    .login-field input {
+      width: 100%;
+      min-height: 4.8rem;
+      padding: 1.2rem 1.4rem;
+      border: 1.5px solid rgba(0,0,0,.24);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--ink);
+      font: inherit;
+      letter-spacing: .08em;
+    }
+
+    .login-field input:focus {
+      outline: none;
+      border-color: var(--green-accent);
+      box-shadow: 0 0 0 3px rgba(0,117,74,.12);
+    }
+
+    .login-error {
+      min-height: 2.2rem;
+      margin: .8rem 0 0;
+      color: #c82014;
+      font-size: 1.4rem;
     }
 
     a {
@@ -72,9 +162,9 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      display: flex;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
       align-items: center;
-      justify-content: space-between;
       min-height: 8.3rem;
       padding: 0 clamp(1.6rem, 4vw, 4rem);
       background: var(--white);
@@ -85,7 +175,7 @@
       display: inline-flex;
       align-items: center;
       gap: 1.2rem;
-      font-weight: 700;
+      font-weight: 400;
       color: var(--green-star);
       white-space: nowrap;
     }
@@ -99,7 +189,7 @@
       background: var(--green-star);
       color: var(--white);
       font-size: 1.5rem;
-      font-weight: 800;
+      font-weight: 400;
       box-shadow: inset 0 0 0 .5rem var(--cream);
     }
 
@@ -107,19 +197,19 @@
       display: flex;
       align-items: center;
       gap: 2.4rem;
-      font-size: 1.4rem;
-      font-weight: 700;
+      justify-content: center;
+      justify-self: center;
+      font-size: 1.5rem;
+      font-weight: 400;
     }
 
     .nav-links a {
-      text-transform: uppercase;
-      letter-spacing: .08em;
+      letter-spacing: 0;
     }
 
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
+    .hero-actions .button.outline,
+    .feature-band .cta-row {
+      display: none;
     }
 
     .button {
@@ -130,16 +220,16 @@
       padding: .7rem 1.6rem;
       border-radius: var(--radius-pill);
       border: 1px solid currentColor;
-      font-size: 1.4rem;
-      font-weight: 700;
+      font-size: 1.5rem;
+      font-weight: 400;
       line-height: 1.2;
-      letter-spacing: -0.01em;
+      letter-spacing: 0;
       transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
       cursor: pointer;
     }
 
     .button:active,
-    .frap:active {
+    .login-panel .button:active {
       transform: scale(.95);
     }
 
@@ -205,8 +295,8 @@
       margin: 0 0 1.6rem;
       color: var(--green-star);
       font-size: 1.3rem;
-      font-weight: 800;
-      letter-spacing: .12em;
+      font-weight: 400;
+      letter-spacing: .04em;
       text-transform: uppercase;
     }
 
@@ -221,17 +311,17 @@
       max-width: 76rem;
       margin-bottom: 2.4rem;
       color: var(--green-star);
-      font-size: clamp(4.2rem, 6.5vw, 7.4rem);
-      line-height: 1.08;
-      font-weight: 700;
-      letter-spacing: -0.016rem;
+      font-size: clamp(3.6rem, 5.6vw, 6.2rem);
+      line-height: 1.18;
+      font-weight: 400;
+      letter-spacing: 0;
     }
 
     .hero-copy {
       max-width: 64rem;
       margin-bottom: 3.2rem;
-      font-size: clamp(1.8rem, 2.2vw, 2.1rem);
-      line-height: 1.65;
+      font-size: clamp(1.8rem, 2.2vw, 2.2rem);
+      line-height: 1.75;
       color: var(--ink);
     }
 
@@ -340,8 +430,8 @@
       margin-bottom: .8rem;
       color: var(--ink-soft);
       font-size: 1.3rem;
-      font-weight: 700;
-      letter-spacing: .1em;
+      font-weight: 400;
+      letter-spacing: .04em;
       text-transform: uppercase;
     }
 
@@ -363,7 +453,7 @@
       color: var(--green-star);
       font-size: 2.4rem;
       line-height: 1.5;
-      font-weight: 700;
+      font-weight: 400;
     }
 
     .section-title p {
@@ -394,8 +484,8 @@
     .timeline-label {
       color: var(--green-star);
       font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: .12em;
+      font-weight: 400;
+      letter-spacing: .04em;
       text-transform: uppercase;
     }
 
@@ -427,8 +517,9 @@
       max-width: 56rem;
       margin-bottom: 1.6rem;
       color: var(--white);
-      font-size: clamp(3.2rem, 5vw, 5.6rem);
-      line-height: 1.14;
+      font-size: clamp(3rem, 4.5vw, 5rem);
+      line-height: 1.25;
+      font-weight: 400;
     }
 
     .feature-band p {
@@ -461,7 +552,7 @@
       border-radius: 50%;
       background: var(--gold);
       color: var(--green-house);
-      font-weight: 800;
+      font-weight: 400;
     }
 
     .research-card h3 {
@@ -496,6 +587,7 @@
       color: var(--green-star);
       font-size: 2.4rem;
       line-height: 1.35;
+      font-weight: 400;
     }
 
     .card p {
@@ -518,7 +610,7 @@
       background: var(--green-light);
       color: var(--green-house);
       font-size: 1.3rem;
-      font-weight: 700;
+      font-weight: 400;
     }
 
     .tools-band {
@@ -566,8 +658,9 @@
       margin: 0;
       color: var(--green-house);
       font-family: "Iowan Old Style", Georgia, serif;
-      font-size: clamp(3.2rem, 5vw, 5rem);
-      line-height: 1.22;
+      font-size: clamp(2.8rem, 4vw, 4.4rem);
+      line-height: 1.35;
+      font-weight: 400;
     }
 
     .quote-card p {
@@ -586,8 +679,9 @@
     .contact h2 {
       margin-bottom: 1.6rem;
       color: var(--white);
-      font-size: clamp(3.2rem, 5vw, 5.6rem);
-      line-height: 1.14;
+      font-size: clamp(3rem, 4.5vw, 5rem);
+      line-height: 1.25;
+      font-weight: 400;
     }
 
     .contact p {
@@ -613,36 +707,11 @@
       margin: 0 auto;
     }
 
-    .frap {
-      position: fixed;
-      right: 1.6rem;
-      bottom: 1.6rem;
-      z-index: 30;
-      display: grid;
-      place-items: center;
-      width: 5.6rem;
-      height: 5.6rem;
-      border: 0;
-      border-radius: 50%;
-      background: var(--green-accent);
-      color: var(--white);
-      box-shadow: 0 0 6px rgba(0,0,0,.24), 0 8px 12px rgba(0,0,0,.14);
-      transition: transform .2s ease, box-shadow .2s ease;
-      cursor: pointer;
-    }
-
-    .frap:active {
-      box-shadow: 0 0 6px rgba(0,0,0,.24), 0 8px 12px rgba(0,0,0,0);
-    }
-
-    .frap svg {
-      width: 2.4rem;
-      height: 2.4rem;
-    }
-
     @media (max-width: 980px) {
       .nav {
         min-height: 7.2rem;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
       }
 
       .nav-links {
@@ -670,10 +739,6 @@
     }
 
     @media (max-width: 640px) {
-      .nav-actions .dark-outline {
-        display: none;
-      }
-
       .brand span:last-child {
         display: none;
       }
@@ -703,22 +768,32 @@
     }
   </style>
 </head>
-<body>
+<body class="locked">
+  <section class="login-gate" aria-labelledby="login-title">
+    <form class="login-panel" id="login-form">
+      <h1 id="login-title">포트폴리오 로그인</h1>
+      <p>비밀번호를 입력하면 정지우 포트폴리오 전체를 볼 수 있습니다.</p>
+      <div class="login-field">
+        <label for="portfolio-password">비밀번호</label>
+        <input id="portfolio-password" name="password" type="password" autocomplete="current-password" autofocus>
+      </div>
+      <button class="button primary" type="submit">입장하기</button>
+      <p class="login-error" id="login-error" aria-live="polite"></p>
+    </form>
+  </section>
   <header class="nav" aria-label="주요 내비게이션">
     <a class="brand" href="#top" aria-label="정지우 포트폴리오 홈">
       <span class="brand-mark">JW</span>
-      <span>Jung JiwOO Portfolio</span>
+      <span>Jeong Ji Woo Portfolio</span>
     </a>
     <nav class="nav-links" aria-label="섹션 이동">
-      <a href="#origin">Origin</a>
-      <a href="#question">Question</a>
-      <a href="#skills">Skills</a>
-      <a href="#project">Project</a>
+      <a href="#origin">서사의 기원</a>
+      <a href="#question">질문의 시작</a>
+      <a href="#project">핵심 프로젝트</a>
+      <a href="#skills">역량과 목표</a>
+      <a href="#ethics">윤리와 비판</a>
+      <a href="#contact">앞으로의 방향</a>
     </nav>
-    <div class="nav-actions">
-      <a class="button dark-outline" href="#contact">소개 보기</a>
-      <a class="button black" href="#project">핵심 프로젝트</a>
-    </div>
   </header>
 
   <main id="top">
@@ -976,12 +1051,32 @@
     </div>
   </footer>
 
-  <a class="frap" href="#project" aria-label="핵심 프로젝트로 이동">
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M7 9h10l-.7 10.2A2 2 0 0 1 14.3 21H9.7a2 2 0 0 1-2-1.8L7 9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-      <path d="M9 9V7a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-      <path d="M8 13h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-    </svg>
-  </a>
+  <script>
+    const loginForm = document.getElementById("login-form");
+    const passwordInput = document.getElementById("portfolio-password");
+    const loginError = document.getElementById("login-error");
+
+    function unlockPortfolio() {
+      document.body.classList.remove("locked");
+      sessionStorage.setItem("portfolio-unlocked", "true");
+    }
+
+    if (sessionStorage.getItem("portfolio-unlocked") === "true") {
+      unlockPortfolio();
+    }
+
+    loginForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      if (passwordInput.value === "jiwoo") {
+        unlockPortfolio();
+        return;
+      }
+
+      loginError.textContent = "비밀번호가 맞지 않습니다.";
+      passwordInput.value = "";
+      passwordInput.focus();
+    });
+  </script>
 </body>
 </html>
